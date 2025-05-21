@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Internet Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Internet Plan</h1>
+        <form action="{{ url_for('delete_plan') }}" method="POST">
+            <label for="plan_id">Select Plan to Delete:</label>
+            <select name="plan_id" id="plan_id" required>
+                {% for plan in plans %}
+                    <option value="{{ plan.id }}">{{ plan.speed }} Mbps - {{ plan.rate }} Shillings</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Delete Plan</button>
+        </form>
+        <a href="{{ url_for('add_plan') }}">Add New Plan</a>
+        <a href="{{ url_for('customer_dashboard') }}">Customer Dashboard</a>
+    </div>
+</body>
+</html>

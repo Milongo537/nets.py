@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Internet Plan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Internet Plan</h1>
+        <form action="{{ url_for('add_plan') }}" method="POST">
+            <div class="form-group">
+                <label for="plan_id">Plan ID:</label>
+                <input type="text" id="plan_id" name="plan_id" required>
+            </div>
+            <div class="form-group">
+                <label for="speed_mbps">Speed (Mbps):</label>
+                <input type="number" id="speed_mbps" name="speed_mbps" required>
+            </div>
+            <div class="form-group">
+                <label for="rate_per_hour">Rate (Shillings per Hour):</label>
+                <input type="number" id="rate_per_hour" name="rate_per_hour" required>
+            </div>
+            <button type="submit">Add Plan</button>
+        </form>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>

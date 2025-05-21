@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Customer Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Internet Billing System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('add_plan') }}">Add Plan</a></li>
+                <li><a href="{{ url_for('delete_plan') }}">Delete Plan</a></li>
+                <li><a href="{{ url_for('payment') }}">Make Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Your Current Plan</h2>
+        <div class="plan-details">
+            <p><strong>Plan Speed:</strong> {{ customer.plan.speed }} Mbps</p>
+            <p><strong>Rate:</strong> {{ customer.plan.rate }} shillings</p>
+            <p><strong>Last Billed:</strong> {{ customer.last_billed }}</p>
+            <p><strong>Total Bill:</strong> {{ customer.total_bill }} shillings</p>
+        </div>
+        <h2>Billing History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in customer.billing_history %}
+                <tr>
+                    <td>{{ bill.date }}</td>
+                    <td>{{ bill.amount }} shillings</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2023 Internet Billing System</p>
+    </footer>
+</body>
+</html>

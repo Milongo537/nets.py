@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Internet Billing System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Internet Billing System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('add_plan') }}">Add Plan</a></li>
+                <li><a href="{{ url_for('delete_plan') }}">Delete Plan</a></li>
+                <li><a href="{{ url_for('customer_dashboard') }}">Customer Dashboard</a></li>
+                <li><a href="{{ url_for('payment') }}">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Internet Billing System</p>
+    </footer>
+</body>
+</html>
